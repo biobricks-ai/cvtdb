@@ -1,35 +1,20 @@
-# How to build bricks
+# CompTox-PK-CvTdb
 
-1. Create a brick named `{newbrick}` from this template
-```
-gh repo create biobricks-ai/{newbrick} -p biobricks-ai/brick-template --public
-gh repo clone biobricks-ai/{newbrick}
-cd newbrick
-```
+<a href="https://github.com/biobricks-ai/cvtdb/actions"><img src="https://github.com/biobricks-ai/cvtdb/actions/workflows/bricktools-check.yaml/badge.svg?branch=main"/></a>
 
-2. Edit stages according to your needs:
-    Recommended scripts:
-    - ``01_download.sh``
-    - ``02_unzip.sh``
-    - ``03_build.sh`` calling a function to process individual files like ``csv2parquet.R`` or ``csv2parquet.py``
+## Description
 
-3. Replace stages in dvc.yaml with your new stages
-    
-4. Build your brick
-```
-dvc repro # runs new stages
-```
+> The CvTdb is a database of pharmacokinetic time-series for environmental chemicals. The database is designed to be built on a MySQL server. If you do not already have access to a MySQL server, create your own following the instructions at https://dev.mysql.com/doc/mysql-getting-started/en/. The database is also provided in SQLite format, which can be queried or updated in R and Python, or viewed using http://inloop.github.io/sqlite-viewer/.
+>
+> Sayre, R.R., Wambaugh, J.F. & Grulke, C.M. Database of pharmacokinetic time-series data and parameters for 144 environmental chemicals. Sci Data 7, 122 (2020). https://doi.org/10.1038/s41597-020-0455-1
 
-5. Push the data to biobricks.ai
-```
-dvc push -r s3.biobricks.ai 
-```
+## Dataset availale at <https://github.com/USEPA/CompTox-PK-CvTdb>
 
-6. Commit the brick
-```
-git add -A && git commit -m "some message"
-git push
-```
 
-7. Monitor the bricktools github action
 
+## Usage
+```{R}
+biobricks::brick_install("cvtdb")
+biobricks::brick_pull("cvtdb")
+biobricks::brick_load("cvtdb")
+```
