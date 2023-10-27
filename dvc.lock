@@ -1,12 +1,33 @@
 schema: '2.0'
 stages:
-  1-stage:
-    cmd: Rscript stages/01-stage.R
+  download:
+    cmd: stages/01_download.sh
     deps:
-    - path: stages/01-stage.R
-      md5: c468dc14527e00c339f146e1dba2bd3b
-      size: 118
+    - path: stages/01_download.sh
+      hash: md5
+      md5: a7355c024268fb0b8b1cdde2ea0a0104
+      size: 466
     outs:
-    - path: data/mtcars.parquet
-      md5: 77cf29accf9535522fad7db1486eff9a
-      size: 6243
+    - path: download
+      hash: md5
+      md5: 5f50d9ba4f8a44ae2ae00f3281dad226.dir
+      size: 36680740
+      nfiles: 20
+  build:
+    cmd: stages/02_build.sh
+    deps:
+    - path: download
+      hash: md5
+      md5: 5f50d9ba4f8a44ae2ae00f3281dad226.dir
+      size: 36680740
+      nfiles: 20
+    - path: stages/02_build.sh
+      hash: md5
+      md5: 7ba6956dd5f9a4a82e259d75e41710ac
+      size: 438
+    outs:
+    - path: brick
+      hash: md5
+      md5: 58769a7829f98f21499278d388c6c24b.dir
+      size: 6766592
+      nfiles: 1
