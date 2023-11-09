@@ -23,11 +23,11 @@ stages:
       nfiles: 20
     - path: stages/02_build.sh
       hash: md5
-      md5: 7ba6956dd5f9a4a82e259d75e41710ac
-      size: 438
+      md5: 70f66c9128f359481f21cbb35db7b391
+      size: 557
     outs:
     - path: brick
       hash: md5
-      md5: 58769a7829f98f21499278d388c6c24b.dir
+      md5: f0f2566cc8600d771dfbd045ca2d3465.dir
       size: 6766592
       nfiles: 1

@@ -18,3 +18,9 @@ echo "Brick path: $brickpath"
 # Copy SQLite file to brick
 find $downloadpath -maxdepth 2 -type f -name '*.sqlite' \
   -exec cp -pv {} $brickpath \;
+
+# Rename SQLite file to cvtdb.sqlite
+for file in $brickpath/*.sqlite
+do
+  mv -- "$file" "$brickpath/cvtdb.sqlite"
+done
